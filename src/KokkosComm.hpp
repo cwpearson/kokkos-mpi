@@ -19,6 +19,7 @@
 #include "KokkosComm_collective.hpp"
 #include "KokkosComm_version.hpp"
 #include "impl/KokkosComm_isend.hpp"
+#include "impl/KokkosComm_irecv.hpp"
 #include "impl/KokkosComm_recv.hpp"
 #include "impl/KokkosComm_send.hpp"
 #include "impl/KokkosComm_concepts.hpp"
@@ -41,8 +42,13 @@ void send(const ExecSpace &space, const SendView &sv, int dest, int tag,
 
 template <KokkosExecutionSpace ExecSpace, ViewOrMdspan RecvView>
 void recv(const ExecSpace &space, RecvView &sv, int src, int tag,
-          MPI_Comm comm) {
+          MPI_Comm comm)  {
   return Impl::recv(space, sv, src, tag, comm);
+}
+
+template <KokkosExecutionSpace ExecSpace, ViewOrMdspan RecvView>
+Req irecv(const ExecSpace &space, RecvView &rv, int src, int tag, MPI_Comm comm) {
+  return Impl::irecv(space, rv, src, tag, comm);
 }
 
 }  // namespace KokkosComm

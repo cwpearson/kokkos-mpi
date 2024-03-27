@@ -23,8 +23,11 @@
 namespace KokkosComm::Impl {
 namespace Packer {
 
-template <ViewOrMdspan View>
+template <ViewOrMdspan View, typename Packer>
 struct MpiArgs {
+  using packer_type =
+      Packer;  // the type of the packer that produced these arguments
+
   View view;
   MPI_Datatype datatype;
   int count;
@@ -38,7 +41,8 @@ struct DeepCopy {
   using non_const_packed_view_type =
       Kokkos::View<typename View::non_const_data_type, Kokkos::LayoutRight,
                    typename View::memory_space>;
-  using args_type = MpiArgs<non_const_packed_view_type>;
+
+  using args_type = MpiArgs<non_const_packed_view_type, DeepCopy<View>>;
 
   template <KokkosExecutionSpace ExecSpace>
   static args_type allocate_packed_for(const ExecSpace &space,
@@ -85,7 +89,7 @@ struct DeepCopy {
 template <ViewOrMdspan View>
 struct MpiDatatype {
   using non_const_packed_view_type = View;
-  using args_type                  = MpiArgs<non_const_packed_view_type>;
+  using args_type = MpiArgs<non_const_packed_view_type, MpiDatatype<View>>;
 
   // don't actually allocate - return the provided view, but with
   // a datatype that describes the data in the view

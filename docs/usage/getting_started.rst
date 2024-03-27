@@ -35,12 +35,12 @@ Configuration Options
 ---------------------
 
 * ``KokkosComm_ENABLE_MDSPAN``: (default=OFF) build with mdspan support
-  * Causes ``KOKKOSCOMM_ENABLE_MDSPAN`` to be defined in source files
+    * Causes ``KOKKOSCOMM_ENABLE_MDSPAN`` to be defined in source files
 * ``KokkosComm_USE_STD_MDSPAN``: (default=OFF) use std::mdspan as the mdspan implementation (if KokkosComm_ENABLE_MDSPAN)
-  * Causes ``KOKKOSCOMM_USE_STD_MDSPAN`` to be defined in source files
+    * Causes ``KOKKOSCOMM_USE_STD_MDSPAN`` to be defined in source files
 * ``KokkosComm_USE_KOKKOS_MDSPAN``: (default=OFF) retrieve and use kokkos/mdspan as the mdspan implementation (if KokkosComm_ENABLE_MDSPAN)
-  * Causes ``KOKKOSCOMM_USE_KOKKOS_MDSPAN`` to be defined in source files
-  * Causes ``KOKKOSCOMM_MDSPAN_IN_EXPERIMENTAL`` to be defined in source files
+    * Causes ``KOKKOSCOMM_USE_KOKKOS_MDSPAN`` to be defined in source files
+    * Causes ``KOKKOSCOMM_MDSPAN_IN_EXPERIMENTAL`` to be defined in source files
 * ``KokkosComm_ENABLE_PERFTESTS``: (default=ON) build performance tests
 * ``KokkosComm_ENABLE_TESTS``: (default=ON) build unit tests
 

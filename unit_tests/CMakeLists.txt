@@ -34,6 +34,7 @@ add_test(NAME test-mpi-2
 )
 
 add_executable(test-main test_main.cpp
+  test_isendirecv.cpp
   test_isendrecv.cpp
   test_reduce.cpp
   test_sendrecv.cpp

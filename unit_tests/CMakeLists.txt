@@ -25,7 +25,11 @@ endif()
 # )
 # FetchContent_MakeAvailable(mpitest)
 
+find_package(MPI REQUIRED)  # We explicitely use MPI here
+
 add_executable(test-mpi test_mpi.cpp)
+target_link_libraries(test-mpi KokkosComm gtest MPI::MPI_CXX)
+
 add_test(NAME test-mpi-1
         COMMAND mpirun -np 1 ./test-mpi
 )
@@ -38,9 +42,8 @@ add_executable(test-main test_main.cpp
   test_reduce.cpp
   test_sendrecv.cpp
 )
-target_link_libraries(test-main KokkosComm gtest 
-#gtest_mpi
-)
+
+target_link_libraries(test-main KokkosComm gtest MPI::MPI_CXX)
 
 add_test(NAME test-main
          COMMAND mpirun -np 2 ./test-main

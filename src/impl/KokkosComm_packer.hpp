@@ -23,7 +23,7 @@
 namespace KokkosComm::Impl {
 namespace Packer {
 
-template <ViewOrMdspan View>
+template <ViewOrMdspan View, typename Packer>
 struct MpiArgs {
   using packer_type =
       Packer;  // the type of the packer that produced these arguments

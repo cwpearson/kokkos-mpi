@@ -25,8 +25,6 @@ endif()
 # )
 # FetchContent_MakeAvailable(mpitest)
 
-find_package(MPI REQUIRED)  # We explicitely use MPI here
-
 add_executable(test-mpi test_mpi.cpp)
 target_link_libraries(test-mpi KokkosComm gtest MPI::MPI_CXX)
 

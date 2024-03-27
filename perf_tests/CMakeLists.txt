@@ -19,7 +19,6 @@ if (NOT benchmark_POPULATED)
 endif()
 unset(BENCHMARK_ENABLE_TESTING)
 
-find_package(MPI REQUIRED)  # We explicitely use MPI here
 
 add_executable(perf_test-main test_main.cpp
   test_sendrecv.cpp

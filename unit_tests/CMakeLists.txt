@@ -31,10 +31,10 @@ add_executable(test-mpi test_mpi.cpp)
 target_link_libraries(test-mpi KokkosComm gtest MPI::MPI_CXX)
 
 add_test(NAME test-mpi-1
-        COMMAND mpirun -np 1 ./test-mpi
+        COMMAND ${MPIEXEC_EXECUTABLE}  ${MPIEXEC_NUMPROC_FLAG} 1 ./test-mpi
 )
 add_test(NAME test-mpi-2
-        COMMAND mpirun -np 2 ./test-mpi
+        COMMAND ${MPIEXEC_EXECUTABLE}  ${MPIEXEC_NUMPROC_FLAG} 2 ./test-mpi
 )
 
 add_executable(test-main test_main.cpp
@@ -46,7 +46,7 @@ add_executable(test-main test_main.cpp
 target_link_libraries(test-main KokkosComm gtest MPI::MPI_CXX)
 
 add_test(NAME test-main
-         COMMAND mpirun -np 2 ./test-main
+         COMMAND ${MPIEXEC_EXECUTABLE}  ${MPIEXEC_NUMPROC_FLAG} 2 ./test-main
 )
 
 
